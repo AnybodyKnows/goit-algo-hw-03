@@ -14,6 +14,7 @@ def get_days_from_today(date) -> int:
     curr_date = dtdt.now().date()
     in_date = dtdt.strptime(date,"%Y-%m-%d").date()
     dif = curr_date-in_date
+    print("sdf")
     return dif.days
 
 print(get_days_from_today("2024-01-01"))
