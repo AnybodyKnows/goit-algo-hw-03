@@ -12,9 +12,13 @@ from datetime import datetime as dtdt
 
 def get_days_from_today(date) -> int:
     curr_date = dtdt.now().date()
-    in_date = dtdt.strptime(date,"%Y-%m-%d").date()
-    dif = curr_date-in_date
-    print("sdf")
-    return dif.days
+    try:
+        in_date = dtdt.strptime(date,"%Y-%m-%d").date()
+        dif = curr_date-in_date
+        return dif.days
+    except:
+        print(f"please input date in correct format YYYY-MM-DD")
+        pass    
 
-print(get_days_from_today("2024-01-01"))
+
+print(get_days_from_today("2023-01-27"))
