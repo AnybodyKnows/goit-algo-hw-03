@@ -13,8 +13,13 @@ def add_prefix (numers):
     return num_with_prefix
    
 def normalize_phone(phone_number):
+    if type(phone_number) == str:
+        phone_number_list = []
+        phone_number_list.append(phone_number)
+    else:
+        phone_number_list = phone_number
     st_nr = []
-    for i in phone_number:
+    for i in phone_number_list:
         patern = r"\d+"
         matches = re.findall(patern,i)
         only_number = "".join(matches)
@@ -26,7 +31,7 @@ def normalize_phone(phone_number):
 
 
 raw_numbers = [
-    "067\\t123 4567",
+    "067\t123 4567",
     "(095) 234-5678\\n",
     "+380 44 123 4567",
     "380501234567",
@@ -35,6 +40,6 @@ raw_numbers = [
     "(050)8889900",
     "38050-111-22-22",
     "38050 111 22 11   ",
-    "123456"
-]
+    "123456"]
+print (normalize_phone("067\t123 4567"))
 print (normalize_phone(raw_numbers))
