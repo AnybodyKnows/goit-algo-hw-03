@@ -2,15 +2,16 @@
 import re
 
 def add_prefix (numers):
-    if len(numers)<7:
-        return(f"incorect number {numers} not inough digits")
-    if re.search(r"^0",numers):
-        num_with_prefix = "+38"+numers
-    if re.search(r"^8",numers):
-        num_with_prefix = "+3"+numers
-    if re.search(r"^3",numers):
-        num_with_prefix = "+"+numers
-    return num_with_prefix
+    match len(numers):
+        case 10:
+            stnum = "+38"+numers
+        case 11:
+            stnum = "+3"+numers
+        case 12:
+            stnum = "+"+numers
+        case _:
+            stnum = ""
+    return stnum
    
 def normalize_phone(phone_number):
     if type(phone_number) == str:
@@ -40,6 +41,8 @@ raw_numbers = [
     "(050)8889900",
     "38050-111-22-22",
     "38050 111 22 11   ",
-    "123456"]
-print (normalize_phone("067\t123 4567"))
+    
+    ]
+print (normalize_phone("+123456789012"))
+print (normalize_phone("432 11 222 22 22"))
 print (normalize_phone(raw_numbers))
